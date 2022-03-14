@@ -1,5 +1,8 @@
+// Middleware to handle date and Time
 module.exports = {
-  format_date: date => {
-    // How do we format the date and time?
-  }
+	format_date: (date) => {
+		return `${new Date(date).getMonth() + 1}/${new Date(
+			date
+		).getDate()}/${new Date(date).getFullYear()}`;
+	},
 };
