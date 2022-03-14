@@ -7,11 +7,26 @@ const helpers = require('./utils/helpers');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const sequelize = require('./config/config.js')
 
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const hbs = exphbs.create({ helpers });
 
-// Need a functionality do we need here?
+const sess = {
+  secret: 'Tech Blog Secret',
+  cookie: {
+    maxAge: 3600000
+  },
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
+}
 
-
+app.use(session(sess));
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
