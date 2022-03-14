@@ -13,7 +13,7 @@ router.get('/', withAuth, async (req, res) => {
   const posts = postData.map(Element => Element.get({ plain: true }));
   const user = userData.get({ plain: true});
   console.log(posts);
-  res.render("user-landing", { posts, user, layout: "dashboard" });
+  res.render("profile", { posts, user, layout: "dashboard" });
 });
 
 router.get('/new', withAuth, (req, res) => {
