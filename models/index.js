@@ -1,4 +1,3 @@
-
 const User = require('./User.js');
 const Comment = require('./Comment.js');
 const Post = require('./Post.js');

@@ -4,7 +4,6 @@ const { Post, Comment, User } = require('../../models');
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
-    // Save the user Id and the Login information 
     req.session.save(function() {
       req.session.user_id = userData.id;
       req.session.loggedIn = true;
@@ -33,7 +32,6 @@ router.post('/login', async (req, res) => {
       console.log('Invalid Password!');
       return;
     }
-    // Save the user Id and the Login information 
     req.session.save(function() {
       req.session.user_id = userData.id;
       req.session.loggedIn = true;
