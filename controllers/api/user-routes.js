@@ -18,15 +18,12 @@ router.post('/', async (req, res) => {
 router.post('/login', async (req, res) => {
   try{
     const userData = await User.findOne({where: {username: req.body.username}});
-
     if(!userData){
       res.status(400).json({message: 'Invalid Username!'});
       console.log('Invalid Username!');
       return;
     }
-
     const validPassword = await userData.verifyPassword(req.body.password);
-
     if(!validPassword){
       res.status(400).json({message: 'Invalid Password!'});
       console.log('Invalid Password!');

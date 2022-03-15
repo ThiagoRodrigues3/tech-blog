@@ -1,4 +1,3 @@
-// Middleware to authenticate if client is logged in
 const withAuth = (req, res, next) => {
   if (!req.session.loggedIn) {
     res.redirect('/login');
